@@ -1,6 +1,7 @@
 export interface AIServiceConfig {
   id: number
   service_type: AIServiceType
+  provider?: string  // 厂商标识
   name: string
   base_url: string
   api_key: string
@@ -18,6 +19,7 @@ export type AIServiceType = 'text' | 'image' | 'video'
 
 export interface CreateAIConfigRequest {
   service_type: AIServiceType
+  provider?: string  // 厂商标识
   name: string
   base_url: string
   api_key: string
@@ -30,6 +32,7 @@ export interface CreateAIConfigRequest {
 
 export interface UpdateAIConfigRequest {
   name?: string
+  provider?: string  // 厂商标识
   base_url?: string
   api_key?: string
   model?: string | string[]  // 支持单个或多个模型
@@ -44,6 +47,7 @@ export interface TestConnectionRequest {
   base_url: string
   api_key: string
   model: string | string[]  // 支持单个或多个模型
+  provider?: string  // 厂商标识
   endpoint?: string
   query_endpoint?: string  // 异步查询端点（用于视频等异步任务）
 }

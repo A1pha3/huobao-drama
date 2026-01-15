@@ -11,10 +11,16 @@
     <template #header>
       <div class="dialog-header">
         <span class="dialog-title">{{ $t('aiConfig.title') }}</span>
-        <el-button type="primary" size="small" @click="showCreateDialog">
-          <el-icon><Plus /></el-icon>
-          <span>{{ $t('aiConfig.addConfig') }}</span>
-        </el-button>
+        <div class="header-actions">
+          <el-button type="success" size="small" @click="showQuickSetupDialog">
+            <el-icon><MagicStick /></el-icon>
+            <span>一键配置火宝</span>
+          </el-button>
+          <el-button type="primary" size="small" @click="showCreateDialog">
+            <el-icon><Plus /></el-icon>
+            <span>{{ $t('aiConfig.addConfig') }}</span>
+          </el-button>
+        </div>
       </div>
     </template>
 
@@ -54,6 +60,52 @@
         />
       </el-tab-pane>
     </el-tabs>
+
+    <!-- Quick Setup Dialog -->
+    <el-dialog
+      v-model="quickSetupVisible"
+      title="一键配置"
+      width="500px"
+      :close-on-click-modal="false"
+      append-to-body
+    >
+      <div class="quick-setup-info">
+        <p>将自动创建以下配置：</p>
+        <ul>
+          <li><strong>文本服务</strong>: {{ providerConfigs.text[1].models[0] }}</li>
+          <li><strong>图片服务</strong>: {{ providerConfigs.image[1].models[0] }}</li>
+          <li><strong>视频服务</strong>: {{ providerConfigs.video[1].models[0] }}</li>
+        </ul>
+        <p class="quick-setup-tip">Base URL: https://api.chatfire.site/v1</p>
+      </div>
+      <el-form label-width="80px">
+        <el-form-item label="API Key" required>
+          <el-input 
+            v-model="quickSetupApiKey" 
+            type="password" 
+            show-password
+            placeholder="请输入 ChatFire API Key"
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <div class="quick-setup-footer">
+          <a 
+            href="https://api.chatfire.site/login?inviteCode=C4453345" 
+            target="_blank"
+            class="register-link"
+          >
+            没有 API Key？点击注册
+          </a>
+          <div class="footer-buttons">
+            <el-button @click="quickSetupVisible = false">取消</el-button>
+            <el-button type="primary" @click="handleQuickSetup" :loading="quickSetupLoading">
+              确认配置
+            </el-button>
+          </div>
+        </div>
+      </template>
+    </el-dialog>
 
     <!-- Edit/Create Sub-Dialog -->
     <el-dialog
@@ -149,11 +201,22 @@
       </el-form>
 
       <template #footer>
-        <el-button @click="editDialogVisible = false">{{ $t('common.cancel') }}</el-button>
-        <el-button v-if="form.service_type === 'text'" @click="testConnection" :loading="testing">{{ $t('aiConfig.actions.test') }}</el-button>
-        <el-button type="primary" @click="handleSubmit" :loading="submitting">
-          {{ isEdit ? $t('common.save') : $t('common.create') }}
-        </el-button>
+        <div class="quick-setup-footer">
+          <a 
+            href="https://api.chatfire.site/login?inviteCode=C4453345" 
+            target="_blank"
+            class="register-link"
+          >
+            没有 API Key？点击注册
+          </a>
+          <div class="footer-buttons">
+            <el-button @click="editDialogVisible = false">{{ $t('common.cancel') }}</el-button>
+            <el-button v-if="form.service_type === 'text'" @click="testConnection" :loading="testing">{{ $t('aiConfig.actions.test') }}</el-button>
+            <el-button type="primary" @click="handleSubmit" :loading="submitting">
+              {{ isEdit ? $t('common.save') : $t('common.create') }}
+            </el-button>
+          </div>
+        </div>
       </template>
     </el-dialog>
   </el-dialog>
@@ -162,7 +225,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from 'vue'
 import { ElMessage, ElMessageBox, type FormInstance, type FormRules } from 'element-plus'
-import { Plus } from '@element-plus/icons-vue'
+import { Plus, MagicStick } from '@element-plus/icons-vue'
 import { aiAPI } from '@/api/ai'
 import type { AIServiceConfig, AIServiceType, CreateAIConfigRequest, UpdateAIConfigRequest } from '@/types/ai'
 import ConfigList from '@/views/settings/components/ConfigList.vue'
@@ -189,6 +252,9 @@ const editingId = ref<number>()
 const formRef = ref<FormInstance>()
 const submitting = ref(false)
 const testing = ref(false)
+const quickSetupVisible = ref(false)
+const quickSetupApiKey = ref('')
+const quickSetupLoading = ref(false)
 
 const form = reactive<CreateAIConfigRequest & { is_active?: boolean, provider?: string }>({
   service_type: 'text',
@@ -543,6 +609,68 @@ const resetForm = () => {
   formRef.value?.resetFields()
 }
 
+const showQuickSetupDialog = () => {
+  quickSetupApiKey.value = ''
+  quickSetupVisible.value = true
+}
+
+const handleQuickSetup = async () => {
+  if (!quickSetupApiKey.value.trim()) {
+    ElMessage.warning('请输入 API Key')
+    return
+  }
+
+  quickSetupLoading.value = true
+  const baseUrl = 'https://api.chatfire.site/v1'
+  const apiKey = quickSetupApiKey.value.trim()
+
+  try {
+    // 创建文本配置
+    const textProvider = providerConfigs.text.find(p => p.id === 'chatfire')!
+    await aiAPI.create({
+      service_type: 'text',
+      provider: 'chatfire',
+      name: generateConfigName('chatfire', 'text'),
+      base_url: baseUrl,
+      api_key: apiKey,
+      model: [textProvider.models[0]],
+      priority: 0
+    })
+
+    // 创建图片配置
+    const imageProvider = providerConfigs.image.find(p => p.id === 'chatfire')!
+    await aiAPI.create({
+      service_type: 'image',
+      provider: 'chatfire',
+      name: generateConfigName('chatfire', 'image'),
+      base_url: baseUrl,
+      api_key: apiKey,
+      model: [imageProvider.models[0]],
+      priority: 0
+    })
+
+    // 创建视频配置
+    const videoProvider = providerConfigs.video.find(p => p.id === 'chatfire')!
+    await aiAPI.create({
+      service_type: 'video',
+      provider: 'chatfire',
+      name: generateConfigName('chatfire', 'video'),
+      base_url: baseUrl,
+      api_key: apiKey,
+      model: [videoProvider.models[0]],
+      priority: 0
+    })
+
+    ElMessage.success('一键配置成功！已创建文本、图片、视频三个服务配置')
+    quickSetupVisible.value = false
+    loadConfigs()
+  } catch (error: any) {
+    ElMessage.error(error.message || '配置失败')
+  } finally {
+    quickSetupLoading.value = false
+  }
+}
+
 // Load configs when dialog opens
 watch(visible, (val) => {
   if (val) {
@@ -564,6 +692,63 @@ watch(visible, (val) => {
   justify-content: space-between;
   width: 100%;
   padding-right: 32px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.quick-setup-info {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-primary);
+
+  p {
+    margin: 0 0 8px 0;
+  }
+
+  ul {
+    margin: 8px 0;
+    padding-left: 20px;
+  }
+
+  li {
+    margin: 4px 0;
+    color: var(--text-secondary);
+  }
+
+  .quick-setup-tip {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+}
+
+.quick-setup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.register-link {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.footer-buttons {
+  display: flex;
+  gap: 8px;
 }
 
 .dialog-title {

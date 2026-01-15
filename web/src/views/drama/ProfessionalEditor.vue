@@ -765,9 +765,9 @@
                             在线预览
                           </el-button>
                         </template>
-                        <el-button v-if="merge.status === 'failed'" type="danger" :icon="Close"
-                          @click="deleteMerge(merge.id)" plain round>
-                          删除记录
+                        <el-button type="danger" :icon="Delete"
+                          @click="deleteMerge(merge.id)" round>
+                          删除
                         </el-button>
                       </div>
                     </div>
@@ -890,7 +890,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import {
   ArrowLeft, Plus, Picture, VideoPlay, VideoPause, View, Setting,
   Upload, MagicStick, VideoCamera, ZoomIn, ZoomOut, Top, Bottom, Check, Close, Right,
-  Timer, Calendar, Clock, Loading, WarningFilled
+  Timer, Calendar, Clock, Loading, WarningFilled, Delete
 } from '@element-plus/icons-vue'
 import { dramaAPI } from '@/api/drama'
 import { generateFramePrompt, type FrameType } from '@/api/frame'
@@ -2483,7 +2483,7 @@ onBeforeUnmount(() => {
   padding: 16px;
   max-height: calc(100vh - 200px);
   overflow-y: auto;
-  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  background: var(--bg-secondary);
 
   .merge-items {
     display: flex;
@@ -2493,17 +2493,17 @@ onBeforeUnmount(() => {
 
   .merge-item {
     position: relative;
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
+    border: 1px solid var(--border-primary);
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(64, 158, 255, 0.3);
-      border-color: rgba(64, 158, 255, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent);
     }
 
     .status-indicator {
@@ -2543,7 +2543,7 @@ onBeforeUnmount(() => {
       align-items: center;
       margin-bottom: 16px;
       padding-bottom: 14px;
-      border-bottom: 1px solid #f0f2f5;
+      border-bottom: 1px solid var(--border-primary);
 
       .title-section {
         display: flex;
@@ -2558,17 +2558,16 @@ onBeforeUnmount(() => {
           width: 38px;
           height: 38px;
           border-radius: 10px;
-          background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 100%);
-          color: #606266;
+          background: var(--bg-secondary);
+          color: var(--text-secondary);
           transition: all 0.3s;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
         }
 
         .merge-title {
           margin: 0;
-          font-size: 16px;
-          font-weight: 600;
-          color: #303133;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--text-secondary);
           line-height: 1.4;
         }
       }
@@ -2583,19 +2582,16 @@ onBeforeUnmount(() => {
     &.merge-status-completed .title-icon {
       background: linear-gradient(135deg, #67c23a 0%, #85ce61 100%);
       color: #fff;
-      box-shadow: 0 2px 8px rgba(103, 194, 58, 0.25);
     }
 
     &.merge-status-processing .title-icon {
       background: linear-gradient(135deg, #e6a23c 0%, #f0c78a 100%);
       color: #fff;
-      box-shadow: 0 2px 8px rgba(230, 162, 60, 0.25);
     }
 
     &.merge-status-failed .title-icon {
       background: linear-gradient(135deg, #f56c6c 0%, #f89898 100%);
       color: #fff;
-      box-shadow: 0 2px 8px rgba(245, 108, 108, 0.25);
     }
 
     .merge-details {
@@ -2608,17 +2604,14 @@ onBeforeUnmount(() => {
         display: flex;
         gap: 10px;
         padding: 12px 14px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+        background: var(--bg-secondary);
         border-radius: 8px;
-        border: 1px solid transparent;
+        border: 1px solid var(--border-primary);
         transition: all 0.3s;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 
         &:hover {
-          background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+          border-color: var(--accent);
           transform: translateY(-1px);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-          border-color: rgba(64, 158, 255, 0.15);
         }
 
         .detail-icon {
@@ -2628,10 +2621,9 @@ onBeforeUnmount(() => {
           width: 28px;
           height: 28px;
           border-radius: 6px;
-          background: #fff;
-          color: #409eff;
+          background: var(--bg-card);
+          color: var(--accent);
           flex-shrink: 0;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
         }
 
         .detail-content {
@@ -2640,15 +2632,15 @@ onBeforeUnmount(() => {
 
           .detail-label {
             font-size: 11px;
-            color: #909399;
+            color: var(--text-muted);
             margin-bottom: 3px;
             font-weight: 500;
           }
 
           .detail-value {
             font-size: 13px;
-            color: #303133;
-            font-weight: 600;
+            color: var(--text-primary);
+            font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -2663,7 +2655,6 @@ onBeforeUnmount(() => {
       :deep(.el-alert) {
         border-radius: 8px;
         border: none;
-        box-shadow: 0 1px 4px rgba(245, 108, 108, 0.12);
         padding: 8px 12px;
         font-size: 12px;
       }
@@ -4132,7 +4123,7 @@ onBeforeUnmount(() => {
           margin: 0;
           font-size: 16px;
           font-weight: 600;
-          color: #303133;
+          color: var(--text-secondary);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;

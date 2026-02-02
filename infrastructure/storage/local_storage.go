@@ -78,8 +78,14 @@ func (s *LocalStorage) DownloadFromURL(url, category string) (string, error) {
 
 // DownloadFromURLWithPath 从远程URL下载文件到本地存储，返回详细信息
 func (s *LocalStorage) DownloadFromURLWithPath(url, category string) (*DownloadResult, error) {
+	// CRITICAL FIX: Add HTTP client with timeout to prevent hanging indefinitely
+	// Without timeout, the download can hang forever if the remote server is unresponsive
+	// 5 minute timeout is reasonable for large video/image files
+	client := &http.Client{
+		Timeout: 5 * time.Minute,
+	}
 	// 发送HTTP请求下载文件
-	resp, err := http.Get(url)
+	resp, err := client.Get(url)
 	if err != nil {
 		return nil, fmt.Errorf("failed to download file: %w", err)
 	}

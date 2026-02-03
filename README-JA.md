@@ -21,6 +21,7 @@
 Huobao Drama は、脚本生成、キャラクターデザイン、絵コンテ作成から動画合成までの全ワークフローを自動化する AI 駆動のショートドラマ制作プラットフォームです。
 
 火宝短剧商业版地址：[火宝短剧商业版](https://drama.chatfire.site/shortvideo)
+火宝小说生成：[火宝小说生成](https://marketing.chatfire.site/huobao-novel/)
 
 ### 🎯 主要機能
 

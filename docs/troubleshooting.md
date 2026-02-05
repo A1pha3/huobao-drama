@@ -757,11 +757,11 @@ docker compose start app
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [快速入门指南](QUICK_START.md) | 15分钟快速上手 | ⭐ |
-| [用户手册](USER_MANUAL.md) | 平台功能的完整操作指南 | ⭐⭐ |
-| [API接口文档](API_REFERENCE.md) | 开发者API参考手册 | ⭐⭐⭐ |
-| [架构设计文档](ARCHITECTURE.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
-| [部署运维指南](DEPLOYMENT.md) | 生产环境部署和运维指南 | ⭐⭐ |
+| [快速入门指南](quick-start.md) | 15分钟快速上手 | ⭐ |
+| [用户手册](user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
+| [API接口文档](api-reference.md) | 开发者API参考手册 | ⭐⭐⭐ |
+| [架构设计文档](architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
+| [部署运维指南](deployment.md) | 生产环境部署和运维指南 | ⭐⭐ |
 
 ---
 

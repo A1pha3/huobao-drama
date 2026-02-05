@@ -41,11 +41,11 @@ Q: 你的主要目标是什么？
 
 | 级别 | 文档名称 | 难度 | 内容概述 |
 |------|----------|------|----------|
-| ⭐ | [安装指南](getting-started/INSTALLATION.md) | 入门 | 环境准备和平台部署 |
-| ⭐ | [快速入门](getting-started/QUICK_START.md) | 入门 | 15分钟创建第一个项目 |
-| ⭐⭐ | [用户手册](user-guide/USER_MANUAL.md) | 核心 | 完整功能操作指南 |
-| ⭐⭐⭐ | [高级用法](user-guide/ADVANCED_USAGE.md) | 进阶 | 复杂场景和优化技巧 |
-| ⭐⭐⭐⭐ | [最佳实践](user-guide/BEST_PRACTICES.md) | 专家 | 创作方法论和经验总结 |
+| ⭐ | [安装指南](getting-started/installation.md) | 入门 | 环境准备和平台部署 |
+| ⭐ | [快速入门](getting-started/quick-start.md) | 入门 | 15分钟创建第一个项目 |
+| ⭐⭐ | [用户手册](user-guide/user-manual.md) | 核心 | 完整功能操作指南 |
+| ⭐⭐⭐ | [高级用法](user-guide/advanced_usage.md) | 进阶 | 复杂场景和优化技巧 |
+| ⭐⭐⭐⭐ | [最佳实践](user-guide/best_practices.md) | 专家 | 创作方法论和经验总结 |
 
 ### 学习建议
 
@@ -79,10 +79,10 @@ Q: 你的主要目标是什么？
 
 | 级别 | 文档名称 | 难度 | 内容概述 |
 |------|----------|------|----------|
-| ⭐ | [开发环境搭建](developer-guide/ENVIRONMENT.md) | 入门 | 本地开发环境配置 |
-| ⭐⭐ | [代码结构详解](developer-guide/CODE_STRUCTURE.md) | 核心 | 项目架构和模块划分 |
-| ⭐⭐⭐ | [开发指南](developer-guide/DEVELOPMENT_GUIDE.md) | 进阶 | 核心开发流程和规范 |
-| ⭐⭐⭐⭐ | [高级开发主题](developer-guide/ADVANCED_DEV.md) | 专家 | 架构决策和最佳实践 |
+| ⭐ | [开发环境搭建](developer-guide/environment.md) | 入门 | 本地开发环境配置 |
+| ⭐⭐ | [代码结构详解](developer-guide/code_structure.md) | 核心 | 项目架构和模块划分 |
+| ⭐⭐⭐ | [开发指南](developer-guide/development_guide.md) | 进阶 | 核心开发流程和规范 |
+| ⭐⭐⭐⭐ | [高级开发主题](developer-guide/advanced_dev.md) | 专家 | 架构决策和最佳实践 |
 
 ### 学习建议
 
@@ -116,10 +116,10 @@ Q: 你的主要目标是什么？
 
 | 级别 | 文档名称 | 难度 | 内容概述 |
 |------|----------|------|----------|
-| ⭐ | [基础知识回顾](mastery-guide/FUNDAMENTALS.md) | 入门 | 核心技术概念回顾 |
-| ⭐⭐ | [架构深度解析](mastery-guide/ARCHITECTURE_ANALYSIS.md) | 核心 | DDD架构和设计原理 |
-| ⭐⭐⭐ | [性能优化](mastery-guide/PERFORMANCE.md) | 进阶 | 性能分析和优化方法 |
-| ⭐⭐⭐⭐ | [设计模式](mastery-guide/DESIGN_PATTERNS.md) | 专家 | 架构模式和最佳实践 |
+| ⭐ | [基础知识回顾](mastery-guide/fundamentals.md) | 入门 | 核心技术概念回顾 |
+| ⭐⭐ | [架构深度解析](mastery-guide/architecture_analysis.md) | 核心 | DDD架构和设计原理 |
+| ⭐⭐⭐ | [性能优化](mastery-guide/performance.md) | 进阶 | 性能分析和优化方法 |
+| ⭐⭐⭐⭐ | [设计模式](mastery-guide/design_patterns.md) | 专家 | 架构模式和最佳实践 |
 
 ### 学习建议
 
@@ -147,12 +147,12 @@ Q: 你的主要目标是什么？
 
 | 文档 | 说明 |
 |------|------|
-| [术语表](references/GLOSSARY.md) | 专业术语中英文对照 |
-| [常见问题](references/FAQ.md) | 常见问题快速解答 |
-| [API参考](API_REFERENCE.md) | RESTful API完整参考 |
-| [架构文档](ARCHITECTURE.md) | 系统架构设计文档 |
-| [部署指南](DEPLOYMENT.md) | 生产环境部署指南 |
-| [故障排查](TROUBLESHOOTING.md) | 问题诊断和解决 |
+| [术语表](references/glossary.md) | 专业术语中英文对照 |
+| [常见问题](references/faq.md) | 常见问题快速解答 |
+| [API参考](api-reference.md) | RESTful API完整参考 |
+| [架构文档](architecture.md) | 系统架构设计文档 |
+| [部署指南](deployment.md) | 生产环境部署指南 |
+| [故障排查](troubleshooting.md) | 问题诊断和解决 |
 
 ### 外部资源
 
@@ -179,7 +179,7 @@ Q: 你的主要目标是什么？
 2. **提交改进**：Fork项目后修改文档并提交Pull Request
 3. **提出建议**：在Discussions中讨论文档改进方向
 
-详细贡献流程请参考[开发者贡献指南](CONTRIBUTING.md)。
+详细贡献流程请参考[开发者贡献指南](contributing.md)。
 
 ---
 

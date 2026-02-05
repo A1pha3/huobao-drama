@@ -135,32 +135,30 @@ HTTP状态码和业务错误码共同描述请求的处理结果。正确理解�
 
 ---
 
-## 第二章：项目与剧本API
+## 第二章：剧集管理API
 
-### 2.1 项目管理接口
+> **重要说明**：火宝短剧使用「剧集(Drama)」作为项目的核心概念，与传统「项目(Project)」术语不同。Drama包含剧本、角色、分镜等所有创作内容。
 
-项目是组织所有创作内容的顶层容器。理解项目的CRUD操作是使用API的第一步。项目的生命周期包括创建、读取、更新和删除四个基本操作，每个操作都有对应的API端点。
-
-**创建项目**：
+### 2.1 剧集CRUD操作
 
 ```
-POST /api/v1/projects
+POST /api/v1/dramas
 ```
 
-创建项目时需要提供项目的基本信息。项目名称在同一用户下必须唯一，重复创建会返回409冲突错误。建议在创建项目时同时设置合适的描述，便于后续管理和识别。
+创建剧集时需要提供剧集的基本信息。剧集名称在同一用户下必须唯一，重复创建会返回409冲突错误。建议在创建剧集时同时设置合适的描述，便于后续管理和识别。
 
 **请求参数**：
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| name | string | 是 | 项目名称，1-100字符 |
-| description | string | 否 | 项目描述 |
-| settings | object | 否 | 项目配置 |
+| name | string | 是 | 剧集名称，1-100字符 |
+| description | string | 否 | 剧集描述 |
+| settings | object | 否 | 剧集配置 |
 
 **请求示例**：
 
 ```bash
-curl -X POST "http://localhost:5678/api/v1/projects" \
+curl -X POST "http://localhost:5678/api/v1/dramas" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{
@@ -193,13 +191,13 @@ curl -X POST "http://localhost:5678/api/v1/projects" \
 }
 ```
 
-**获取项目列表**：
+**获取剧集列表**：
 
 ```
-GET /api/v1/projects
+GET /api/v1/dramas
 ```
 
-获取当前用户的项目列表，支持分页和排序。列表按照更新时间倒序排列，最新更新的项目排在最前面。
+获取当前用户的剧集列表，支持分页和排序。列表按照更新时间倒序排列，最新更新的剧集排在最前面。
 
 **查询参数**：
 
@@ -207,40 +205,40 @@ GET /api/v1/projects
 |------|------|------|
 | page | integer | 页码，默认1 |
 | per_page | integer | 每页数量，默认20 |
-| keyword | string | 搜索关键词，匹配项目名称 |
+| keyword | string | 搜索关键词，匹配剧集名称 |
 
-**获取单个项目**：
-
-```
-GET /api/v1/projects/{project_id}
-```
-
-获取指定项目的详细信息，包括项目配置、创建时间、更新时间等。
-
-**更新项目**：
+**获取单个剧集**：
 
 ```
-PUT /api/v1/projects/{project_id}
+GET /api/v1/dramas/{drama_id}
 ```
 
-更新项目的名称、描述或配置。更新时使用**全量更新**策略，即请求中需要包含所有需要保留的字段，未包含的字段会被清空（除系统字段外）。如果需要部分更新，请使用PATCH方法。
+获取指定剧集的详细信息，包括剧集配置、创建时间、更新时间等。
 
-**删除项目**：
+**更新剧集**：
 
 ```
-DELETE /api/v1/projects/{project_id}
+PUT /api/v1/dramas/{drama_id}
 ```
 
-删除项目及其关联的所有资源（剧本、角色、分镜、视频）。此操作不可逆，删除前请确认。
+更新剧集的名称、描述或配置。更新时使用**全量更新**策略，即请求中需要包含所有需要保留的字段，未包含的字段会被清空（除系统字段外）。如果需要部分更新，请使用PATCH方法。
+
+**删除剧集**：
+
+```
+DELETE /api/v1/dramas/{drama_id}
+```
+
+删除剧集及其关联的所有资源（剧本、角色、分镜、视频）。此操作不可逆，删除前请确认。
 
 ### 2.2 剧本管理接口
 
-剧本是项目的核心内容，承载了短剧的文字信息。剧本API提供了剧本的创建、读取、更新、删除以及AI生成等功能。
+剧本是剧集的核心内容，承载了短剧的文字信息。剧本API提供了剧本的创建、读取、更新、删除以及AI生成等功能。
 
 **创建剧本**：
 
 ```
-POST /api/v1/projects/{project_id}/scripts
+POST /api/v1/dramas/{drama_id}/scripts
 ```
 
 剧本可以手动输入，也可以通过AI生成。创建剧本时可以同时设置剧本的结构化信息，如场景列表、角色列表等。
@@ -259,7 +257,7 @@ POST /api/v1/projects/{project_id}/scripts
 | 字段 | 类型 | 说明 |
 |------|------|------|
 | id | string | 剧本唯一标识符 |
-| project_id | string | 所属项目ID |
+| drama_id | string | 所属剧集ID |
 | title | string | 剧本标题 |
 | content | string | 剧本正文 |
 | scene_count | integer | 场景数量 |
@@ -269,7 +267,7 @@ POST /api/v1/projects/{project_id}/scripts
 **AI辅助生成剧本**：
 
 ```
-POST /api/v1/projects/{project_id}/scripts/generate
+POST /api/v1/dramas/{drama_id}/scripts/generate
 ```
 
 这是平台的核心功能之一，通过AI自动生成剧本。请求时需要提供创作意图描述，AI会根据描述生成完整的剧本结构。
@@ -286,7 +284,7 @@ POST /api/v1/projects/{project_id}/scripts/generate
 **请求示例**：
 
 ```bash
-curl -X POST "http://localhost:5678/api/v1/projects/proj_abc123/scripts/generate" \
+curl -X POST "http://localhost:5678/api/v1/dramas/proj_abc123/scripts/generate" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{
@@ -304,7 +302,7 @@ curl -X POST "http://localhost:5678/api/v1/projects/proj_abc123/scripts/generate
   "message": "success",
   "data": {
     "id": "script_xyz789",
-    "project_id": "proj_abc123",
+    "drama_id": "proj_abc123",
     "title": "青春的梦想",
     "content": "场景一：学校操场（内，日）...",
     "scenes": [
@@ -323,7 +321,7 @@ curl -X POST "http://localhost:5678/api/v1/projects/proj_abc123/scripts/generate
 **获取剧本详情**：
 
 ```
-GET /api/v1/projects/{project_id}/scripts/{script_id}
+GET /api/v1/dramas/{drama_id}/scripts/{script_id}
 ```
 
 获取剧本的详细信息，包括剧本内容、场景列表、统计数据等。
@@ -331,7 +329,7 @@ GET /api/v1/projects/{project_id}/scripts/{script_id}
 **更新剧本**：
 
 ```
-PUT /api/v1/projects/{project_id}/scripts/{script_id}
+PUT /api/v1/dramas/{drama_id}/scripts/{script_id}
 ```
 
 更新剧本内容或元数据。支持全量更新和部分更新两种模式。
@@ -343,7 +341,7 @@ PUT /api/v1/projects/{project_id}/scripts/{script_id}
 **获取版本列表**：
 
 ```
-GET /api/v1/projects/{project_id}/scripts/{script_id}/versions
+GET /api/v1/dramas/{drama_id}/scripts/{script_id}/versions
 ```
 
 列出剧本的所有历史版本，每次保存会自动创建一个新版本。
@@ -361,7 +359,7 @@ GET /api/v1/projects/{project_id}/scripts/{script_id}/versions
 **恢复版本**：
 
 ```
-POST /api/v1/projects/{project_id}/scripts/{script_id}/versions/{version_id}/restore
+POST /api/v1/dramas/{drama_id}/scripts/{script_id}/versions/{version_id}/restore
 ```
 
 将剧本恢复到指定版本的内容。恢复操作会创建一个新的版本快照，不会删除历史版本。
@@ -377,7 +375,7 @@ POST /api/v1/projects/{project_id}/scripts/{script_id}/versions/{version_id}/res
 **创建角色**：
 
 ```
-POST /api/v1/projects/{project_id}/characters
+POST /api/v1/dramas/{drama_id}/characters
 ```
 
 创建角色时需要提供角色的基本信息和形象描述。角色名称在项目内必须唯一。
@@ -395,7 +393,7 @@ POST /api/v1/projects/{project_id}/characters
 **请求示例**：
 
 ```bash
-curl -X POST "http://localhost:5678/api/v1/projects/proj_abc123/characters" \
+curl -X POST "http://localhost:5678/api/v1/dramas/proj_abc123/characters" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{
@@ -410,7 +408,7 @@ curl -X POST "http://localhost:5678/api/v1/projects/proj_abc123/characters" \
 **AI生成角色形象**：
 
 ```
-POST /api/v1/projects/{project_id}/characters/{character_id}/generate-image
+POST /api/v1/dramas/{drama_id}/characters/{character_id}/generate-image
 ```
 
 使用AI根据角色的描述生成形象图片。生成是异步过程，返回任务ID供后续查询状态。
@@ -470,7 +468,7 @@ GET /api/v1/tasks/{task_id}
 **上传角色图片**：
 
 ```
-POST /api/v1/projects/{project_id}/characters/{character_id}/upload-image
+POST /api/v1/dramas/{drama_id}/characters/{character_id}/upload-image
 ```
 
 上传本地图片作为角色形象。请求需要使用`multipart/form-data`格式。
@@ -489,7 +487,7 @@ POST /api/v1/projects/{project_id}/characters/{character_id}/upload-image
 **批量获取角色**：
 
 ```
-GET /api/v1/projects/{project_id}/characters/batch
+GET /api/v1/dramas/{drama_id}/characters/batch
 ```
 
 通过角色ID列表批量获取角色详情。
@@ -503,7 +501,7 @@ GET /api/v1/projects/{project_id}/characters/batch
 **批量删除角色**：
 
 ```
-DELETE /api/v1/projects/{project_id}/characters/batch
+DELETE /api/v1/dramas/{drama_id}/characters/batch
 ```
 
 批量删除指定角色，被角色关联的分镜不会自动删除。
@@ -519,7 +517,7 @@ DELETE /api/v1/projects/{project_id}/characters/batch
 **AI自动生成分镜**：
 
 ```
-POST /api/v1/projects/{project_id}/storyboards/generate
+POST /api/v1/dramas/{drama_id}/storyboards/generate
 ```
 
 这是核心功能之一，自动解析剧本内容，生成对应的分镜序列。
@@ -598,7 +596,7 @@ GET /api/v1/tasks/{task_id}
 **更新分镜**：
 
 ```
-PUT /api/v1/projects/{project_id}/storyboards/{storyboard_id}
+PUT /api/v1/dramas/{drama_id}/storyboards/{storyboard_id}
 ```
 
 更新分镜的描述、镜头类型、构图等信息。
@@ -627,7 +625,7 @@ PUT /api/v1/projects/{project_id}/storyboards/{storyboard_id}
 **重新生成分镜图像**：
 
 ```
-POST /api/v1/projects/{project_id}/storyboards/{storyboard_id}/regenerate-image
+POST /api/v1/dramas/{drama_id}/storyboards/{storyboard_id}/regenerate-image
 ```
 
 使用新的参数重新生成分镜图像。适用于对当前图像不满意的场景。
@@ -647,7 +645,7 @@ POST /api/v1/projects/{project_id}/storyboards/{storyboard_id}/regenerate-image
 **调整分镜顺序**：
 
 ```
-PUT /api/v1/projects/{project_id}/storyboards/reorder
+PUT /api/v1/dramas/{drama_id}/storyboards/reorder
 ```
 
 批量调整分镜的顺序。请求中需要提供完整的分镜ID列表及其新位置。
@@ -667,7 +665,7 @@ PUT /api/v1/projects/{project_id}/storyboards/reorder
 **关联剧本场景**：
 
 ```
-PUT /api/v1/projects/{project_id}/storyboards/{storyboard_id}/link-scene
+PUT /api/v1/dramas/{drama_id}/storyboards/{storyboard_id}/link-scene
 ```
 
 将分镜与剧本中的特定场景关联。关联后，分镜会继承场景的信息（如出现角色、位置、时间等）。
@@ -683,7 +681,7 @@ PUT /api/v1/projects/{project_id}/storyboards/{storyboard_id}/link-scene
 **创建视频生成任务**：
 
 ```
-POST /api/v1/projects/{project_id}/videos/generate
+POST /api/v1/dramas/{drama_id}/videos/generate
 ```
 
 创建视频生成任务，可以选择单个分镜或批量生成分镜视频。
@@ -708,7 +706,7 @@ POST /api/v1/projects/{project_id}/videos/generate
 **请求示例**：
 
 ```bash
-curl -X POST "http://localhost:5678/api/v1/projects/proj_abc123/videos/generate" \
+curl -X POST "http://localhost:5678/api/v1/dramas/proj_abc123/videos/generate" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{
@@ -806,7 +804,7 @@ GET /api/v1/tasks/{task_id}
 **获取视频文件信息**：
 
 ```
-GET /api/v1/projects/{project_id}/videos/{video_id}
+GET /api/v1/dramas/{drama_id}/videos/{video_id}
 ```
 
 获取单个视频的详细信息，包括文件URL、时长、分辨率等。
@@ -814,7 +812,7 @@ GET /api/v1/projects/{project_id}/videos/{video_id}
 **导出视频**：
 
 ```
-GET /api/v1/projects/{project_id}/videos/{video_id}/export
+GET /api/v1/dramas/{drama_id}/videos/{video_id}/export
 ```
 
 导出视频文件到本地。返回文件的下载URL或直接返回文件流。
@@ -822,7 +820,7 @@ GET /api/v1/projects/{project_id}/videos/{video_id}/export
 **批量导出**：
 
 ```
-POST /api/v1/projects/{project_id}/videos/export-batch
+POST /api/v1/dramas/{drama_id}/videos/export-batch
 ```
 
 批量导出多个视频，支持打包成ZIP文件。
@@ -834,7 +832,7 @@ POST /api/v1/projects/{project_id}/videos/export-batch
 **创建拼接任务**：
 
 ```
-POST /api/v1/projects/{project_id}/videos/concatenate
+POST /api/v1/dramas/{drama_id}/videos/concatenate
 ```
 
 将多个视频片段拼接成一个完整视频。
@@ -865,7 +863,7 @@ POST /api/v1/projects/{project_id}/videos/concatenate
 **获取资源列表**：
 
 ```
-GET /api/v1/projects/{project_id}/assets
+GET /api/v1/dramas/{drama_id}/assets
 ```
 
 获取项目的资源列表，支持分类筛选和分页。
@@ -894,7 +892,7 @@ GET /api/v1/projects/{project_id}/assets
 **上传文件**：
 
 ```
-POST /api/v1/projects/{project_id}/assets/upload
+POST /api/v1/dramas/{drama_id}/assets/upload
 ```
 
 上传文件到项目资源库。
@@ -1019,10 +1017,10 @@ def handle_api_error(response):
 ```python
 import concurrent.futures
 
-def batch_fetch_characters(project_id, character_ids, max_workers=5):
+def batch_fetch_characters(drama_id, character_ids, max_workers=5):
     """并发获取角色信息"""
     def fetch_one(character_id):
-        url = f"/api/v1/projects/{project_id}/characters/{character_id}"
+        url = f"/api/v1/dramas/{drama_id}/characters/{character_id}"
         return requests.get(url, headers=headers)
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -1129,9 +1127,9 @@ class HuobaoClient:
             "description": description
         })
     
-    def generate_script(self, project_id: str, prompt: str) -> dict:
+    def generate_script(self, drama_id: str, prompt: str) -> dict:
         """AI生成剧本"""
-        return self._request("POST", f"/projects/{project_id}/scripts/generate", json={
+        return self._request("POST", f"/projects/{drama_id}/scripts/generate", json={
             "prompt": prompt
         })
     
@@ -1150,11 +1148,11 @@ def create_drama_project(client: HuobaoClient, prompt: str) -> dict:
     
     # 1. 创建项目
     project = client.create_project("AI生成短剧项目")
-    project_id = project["data"]["id"]
-    print(f"项目创建成功: {project_id}")
+    drama_id = project["data"]["id"]
+    print(f"项目创建成功: {drama_id}")
     
     # 2. AI生成剧本
-    script_task = client.generate_script(project_id, prompt)
+    script_task = client.generate_script(drama_id, prompt)
     task_id = script_task["data"]["task_id"]
     
     # 等待剧本生成完成
@@ -1163,7 +1161,7 @@ def create_drama_project(client: HuobaoClient, prompt: str) -> dict:
     print(f"剧本生成成功: {script_id}")
     
     # 3. 生成分镜
-    storyboard_task = client.generate_storyboards(project_id, script_id)
+    storyboard_task = client.generate_storyboards(drama_id, script_id)
     task_id = storyboard_task["data"]["task_id"]
     
     storyboards = wait_for_task(client, task_id, interval=10)
@@ -1171,14 +1169,14 @@ def create_drama_project(client: HuobaoClient, prompt: str) -> dict:
     print(f"分镜生成成功，共{len(storyboard_ids)}个")
     
     # 4. 生成视频
-    video_task = client.generate_videos(project_id, storyboard_ids)
+    video_task = client.generate_videos(drama_id, storyboard_ids)
     task_id = video_task["data"]["task_id"]
     
     videos = wait_for_task(client, task_id, interval=30)
     print(f"视频生成成功，共{len(videos['data']['result']['videos'])}个")
     
     return {
-        "project_id": project_id,
+        "drama_id": drama_id,
         "script_id": script_id,
         "storyboard_ids": storyboard_ids,
         "videos": videos["data"]["result"]["videos"]
@@ -1208,18 +1206,18 @@ def wait_for_task(client: HuobaoClient, task_id: str, interval: int = 5) -> dict
 |----------|------|------|
 | POST | /api/v1/auth/login | 用户登录 |
 | POST | /api/v1/auth/refresh | 刷新令牌 |
-| GET | /api/v1/projects | 获取项目列表 |
-| POST | /api/v1/projects | 创建项目 |
-| GET | /api/v1/projects/{id} | 获取项目详情 |
-| PUT | /api/v1/projects/{id} | 更新项目 |
-| DELETE | /api/v1/projects/{id} | 删除项目 |
-| POST | /api/v1/projects/{id}/scripts | 创建剧本 |
-| POST | /api/v1/projects/{id}/scripts/generate | AI生成剧本 |
-| GET | /api/v1/projects/{id}/scripts/{sid} | 获取剧本详情 |
-| POST | /api/v1/projects/{id}/characters | 创建角色 |
-| POST | /api/v1/projects/{id}/characters/{cid}/generate-image | AI生成角色形象 |
-| POST | /api/v1/projects/{id}/storyboards/generate | AI生成分镜 |
-| POST | /api/v1/projects/{id}/videos/generate | 视频生成 |
+| GET | /api/v1/dramas | 获取项目列表 |
+| POST | /api/v1/dramas | 创建项目 |
+| GET | /api/v1/dramas/{id} | 获取项目详情 |
+| PUT | /api/v1/dramas/{id} | 更新项目 |
+| DELETE | /api/v1/dramas/{id} | 删除项目 |
+| POST | /api/v1/dramas/{id}/scripts | 创建剧本 |
+| POST | /api/v1/dramas/{id}/scripts/generate | AI生成剧本 |
+| GET | /api/v1/dramas/{id}/scripts/{sid} | 获取剧本详情 |
+| POST | /api/v1/dramas/{id}/characters | 创建角色 |
+| POST | /api/v1/dramas/{id}/characters/{cid}/generate-image | AI生成角色形象 |
+| POST | /api/v1/dramas/{id}/storyboards/generate | AI生成分镜 |
+| POST | /api/v1/dramas/{id}/videos/generate | 视频生成 |
 | GET | /api/v1/tasks/{id} | 查询任务状态 |
 
 ---
@@ -1252,11 +1250,11 @@ def wait_for_task(client: HuobaoClient, task_id: str, interval: int = 5) -> dict
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [快速入门指南](QUICK_START.md) | 15分钟快速上手 | ⭐ |
-| [用户手册](USER_MANUAL.md) | 平台功能的完整操作指南 | ⭐⭐ |
-| [架构设计文档](ARCHITECTURE.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
-| [部署运维指南](DEPLOYMENT.md) | 生产环境部署和运维指南 | ⭐⭐ |
-| [故障排查文档](TROUBLESHOOTING.md) | 常见问题和解决方案 | ⭐⭐ |
+| [快速入门指南](quick-start.md) | 15分钟快速上手 | ⭐ |
+| [用户手册](user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
+| [架构设计文档](architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
+| [部署运维指南](deployment.md) | 生产环境部署和运维指南 | ⭐⭐ |
+| [故障排查文档](troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
 
 ---
 

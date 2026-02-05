@@ -473,10 +473,10 @@ HTTPS_PROXY=http://proxy.example.com:7890
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [快速入门](QUICK_START.md) | 15分钟创建第一个项目 | ⭐ |
-| [用户手册](USER_MANUAL.md) | 完整功能操作指南 | ⭐⭐ |
-| [高级用法](ADVANCED_USAGE.md) | 复杂场景处理 | ⭐⭐⭐ |
-| [部署运维指南](../DEPLOYMENT.md) | 生产环境部署详细指南 | ⭐⭐ |
+| [快速入门](quick-start.md) | 15分钟创建第一个项目 | ⭐ |
+| [用户手册](user-manual.md) | 完整功能操作指南 | ⭐⭐ |
+| [高级用法](advanced_usage.md) | 复杂场景处理 | ⭐⭐⭐ |
+| [部署运维指南](../deployment.md) | 生产环境部署详细指南 | ⭐⭐ |
 
 ---
 

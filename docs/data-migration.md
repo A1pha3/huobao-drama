@@ -228,7 +228,7 @@ if err := migrationService.MigrateLocalPaths(); err != nil {
 
 - **服务实现**：`application/services/data_migration_service.go`
 - **集成代码**：`main.go`（第 45-55 行）
-- **文档**：`docs/DATA_MIGRATION.md`
+- **文档**：`docs/data-migration.md`
 
 ## 版本历史
 

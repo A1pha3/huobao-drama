@@ -1114,22 +1114,22 @@ class HuobaoClient:
         response.raise_for_status()
         return response.json()
     
-    def get_projects(self, page: int = 1, per_page: int = 20) -> dict:
-        """获取项目列表"""
-        return self._request("GET", "/projects", params={
+    def get_dramas(self, page: int = 1, per_page: int = 20) -> dict:
+        """获取剧集列表"""
+        return self._request("GET", "/dramas", params={
             "page": page, "per_page": per_page
         })
     
-    def create_project(self, name: str, description: str = "") -> dict:
-        """创建项目"""
-        return self._request("POST", "/projects", json={
+    def create_drama(self, name: str, description: str = "") -> dict:
+        """创建剧集"""
+        return self._request("POST", "/dramas", json={
             "name": name,
             "description": description
         })
     
     def generate_script(self, drama_id: str, prompt: str) -> dict:
         """AI生成剧本"""
-        return self._request("POST", f"/projects/{drama_id}/scripts/generate", json={
+        return self._request("POST", f"/dramas/{drama_id}/scripts/generate", json={
             "prompt": prompt
         })
     
@@ -1143,13 +1143,13 @@ class HuobaoClient:
 以下示例展示了一个完整的项目创建到视频生成的工作流程：
 
 ```python
-def create_drama_project(client: HuobaoClient, prompt: str) -> dict:
+def create_drama_workflow(client: HuobaoClient, prompt: str) -> dict:
     """完整的短剧创建流程"""
     
-    # 1. 创建项目
-    project = client.create_project("AI生成短剧项目")
-    drama_id = project["data"]["id"]
-    print(f"项目创建成功: {drama_id}")
+    # 1. 创建剧集
+    drama = client.create_drama("AI生成短剧项目")
+    drama_id = drama["data"]["id"]
+    print(f"剧集创建成功: {drama_id}")
     
     # 2. AI生成剧本
     script_task = client.generate_script(drama_id, prompt)

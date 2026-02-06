@@ -135,8 +135,8 @@ page_tree:
   - index.md
   # Getting started section
   - getting-started:
-      - Installation: getting-started/INSTALLATION.md
-      - Quick Start: getting-started/QUICK_START.md
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quick-start.md
   # User guide section
   - user-guide:
       - User Manual: user-guide/user-manual.md
@@ -155,13 +155,13 @@ page_tree:
       - Performance: mastery-guide/performance.md
       - Design Patterns: mastery-guide/design_patterns.md
   # Reference section
-  - API Reference: API_REFERENCE.md
-  - Architecture: ARCHITECTURE.md
-  - Deployment: DEPLOYMENT.md
-  - Troubleshooting: TROUBLESHOOTING.md
-  - Contributing: CONTRIBUTING.md
-  - Glossary: references/GLOSSARY.md
-  - FAQ: references/FAQ.md
+  - API Reference: api-reference.md
+  - Architecture: architecture.md
+  - Deployment: deployment.md
+  - Troubleshooting: troubleshooting.md
+  - Contributing: contributing.md
+  - Glossary: references/glossary.md
+  - FAQ: references/faq.md
 
 # Google Analytics (optional - uncomment and configure)
 # google_analytics:

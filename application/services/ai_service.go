@@ -287,6 +287,14 @@ func (s *AIService) TestConnection(req *TestConnectionRequest) error {
 		s.log.Infow("Using Gemini client", "baseURL", req.BaseURL)
 		endpoint = "/v1beta/models/{model}:generateContent"
 		client = ai.NewGeminiClient(req.BaseURL, req.APIKey, model, endpoint)
+	case "glm", "zhipu":
+		// Zhipu GLM
+		s.log.Infow("Using GLM client", "baseURL", req.BaseURL)
+		endpoint = req.Endpoint
+		if endpoint == "" {
+			endpoint = "/api/paas/v4/chat/completions"
+		}
+		client = ai.NewGLMClient(req.BaseURL, req.APIKey, model, endpoint)
 	case "openai", "chatfire":
 		// OpenAI 格式（包括 chatfire 等）
 		s.log.Infow("Using OpenAI-compatible client", "baseURL", req.BaseURL, "provider", req.Provider)
@@ -373,6 +381,8 @@ func (s *AIService) GetAIClient(serviceType string) (ai.AIClient, error) {
 		switch config.Provider {
 		case "gemini", "google":
 			endpoint = "/v1beta/models/{model}:generateContent"
+		case "glm", "zhipu":
+			endpoint = "/api/paas/v4/chat/completions"
 		default:
 			endpoint = "/chat/completions"
 		}
@@ -382,6 +392,8 @@ func (s *AIService) GetAIClient(serviceType string) (ai.AIClient, error) {
 	switch config.Provider {
 	case "gemini", "google":
 		return ai.NewGeminiClient(config.BaseURL, config.APIKey, model, endpoint), nil
+	case "glm", "zhipu":
+		return ai.NewGLMClient(config.BaseURL, config.APIKey, model, endpoint), nil
 	default:
 		// openai, chatfire 等其他厂商都使用 OpenAI 格式
 		return ai.NewOpenAIClient(config.BaseURL, config.APIKey, model, endpoint), nil
@@ -401,6 +413,8 @@ func (s *AIService) GetAIClientForModel(serviceType string, modelName string) (a
 		switch config.Provider {
 		case "gemini", "google":
 			endpoint = "/v1beta/models/{model}:generateContent"
+		case "glm", "zhipu":
+			endpoint = "/api/paas/v4/chat/completions"
 		default:
 			endpoint = "/chat/completions"
 		}
@@ -410,6 +424,8 @@ func (s *AIService) GetAIClientForModel(serviceType string, modelName string) (a
 	switch config.Provider {
 	case "gemini", "google":
 		return ai.NewGeminiClient(config.BaseURL, config.APIKey, modelName, endpoint), nil
+	case "glm", "zhipu":
+		return ai.NewGLMClient(config.BaseURL, config.APIKey, modelName, endpoint), nil
 	default:
 		// openai, chatfire 等其他厂商都使用 OpenAI 格式
 		return ai.NewOpenAIClient(config.BaseURL, config.APIKey, modelName, endpoint), nil

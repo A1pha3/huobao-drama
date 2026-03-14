@@ -607,9 +607,9 @@ docker compose logs -f app
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [代码结构详解](code_structure.md) | 项目架构和模块划分 | ⭐⭐ |
-| [开发指南](development_guide.md) | 核心开发流程和规范 | ⭐⭐⭐ |
-| [高级开发主题](advanced_dev.md) | 架构决策和最佳实践 | ⭐⭐⭐⭐ |
+| [代码结构详解](code-structure.md) | 项目架构和模块划分 | ⭐⭐ |
+| [开发指南](development-guide.md) | 核心开发流程和规范 | ⭐⭐⭐ |
+| [高级开发主题](advanced-dev.md) | 架构决策和最佳实践 | ⭐⭐⭐⭐ |
 
 ---
 

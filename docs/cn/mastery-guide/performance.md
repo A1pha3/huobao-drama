@@ -525,8 +525,8 @@ func HandleRequest(c *gin.Context) {
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
 | [基础知识回顾](fundamentals.md) | 核心技术概念回顾 | ⭐ |
-| [架构深度解析](architecture_analysis.md) | DDD架构和设计原理 | ⭐⭐ |
-| [设计模式](design_patterns.md) | 架构模式和最佳实践 | ⭐⭐⭐⭐ |
+| [架构深度解析](architecture-analysis.md) | DDD架构和设计原理 | ⭐⭐ |
+| [设计模式](design-patterns.md) | 架构模式和最佳实践 | ⭐⭐⭐⭐ |
 
 ---
 

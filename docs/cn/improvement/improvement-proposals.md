@@ -953,7 +953,7 @@ func calculateDuration(script string) int {
 ## 附录B：相关文档链接
 
 - [分镜模块深度分析报告](../analysis/storyboard-module-analysis.md)
-- [代码结构说明](../developer-guide/code_structure.md)
+- [代码结构说明](../developer-guide/code-structure.md)
 - [API参考文档](../api-reference.md)
 
 ---

@@ -265,8 +265,8 @@ AI生成是一个概率性的过程，可能需要多次尝试才能获得满意
 |----------|------|------|
 | [安装指南](installation.md) | 环境准备和部署配置 | ⭐ |
 | [用户手册](../user-guide/user-manual.md) | 完整功能操作指南 | ⭐⭐ |
-| [高级用法](../user-guide/advanced_usage.md) | 复杂场景处理 | ⭐⭐⭐ |
-| [最佳实践](../user-guide/best_practices.md) | 创作方法论 | ⭐⭐⭐⭐ |
+| [高级用法](../user-guide/advanced-usage.md) | 复杂场景处理 | ⭐⭐⭐ |
+| [最佳实践](../user-guide/best-practices.md) | 创作方法论 | ⭐⭐⭐⭐ |
 
 ---
 

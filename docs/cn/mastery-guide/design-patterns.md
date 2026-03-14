@@ -972,7 +972,7 @@ func (p *EventSourcedProject) GetEventStream() []DomainEvent {
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
 | [基础知识回顾](fundamentals.md) | 核心技术概念回顾 | ⭐ |
-| [架构深度解析](architecture_analysis.md) | DDD架构和设计原理 | ⭐⭐ |
+| [架构深度解析](architecture-analysis.md) | DDD架构和设计原理 | ⭐⭐ |
 | [性能优化](performance.md) | 性能分析和优化方法 | ⭐⭐⭐ |
 
 ---

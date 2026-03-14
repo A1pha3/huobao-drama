@@ -44,8 +44,8 @@ Q: 你的主要目标是什么？
 | ⭐ | [安装指南](getting-started/installation.md) | 入门 | 环境准备和平台部署 |
 | ⭐ | [快速入门](getting-started/quick-start.md) | 入门 | 15分钟创建第一个项目 |
 | ⭐⭐ | [用户手册](user-guide/user-manual.md) | 核心 | 完整功能操作指南 |
-| ⭐⭐⭐ | [高级用法](user-guide/advanced_usage.md) | 进阶 | 复杂场景和优化技巧 |
-| ⭐⭐⭐⭐ | [最佳实践](user-guide/best_practices.md) | 专家 | 创作方法论和经验总结 |
+| ⭐⭐⭐ | [高级用法](user-guide/advanced-usage.md) | 进阶 | 复杂场景和优化技巧 |
+| ⭐⭐⭐⭐ | [最佳实践](user-guide/best-practices.md) | 专家 | 创作方法论和经验总结 |
 
 ### 学习建议
 
@@ -80,9 +80,9 @@ Q: 你的主要目标是什么？
 | 级别 | 文档名称 | 难度 | 内容概述 |
 |------|----------|------|----------|
 | ⭐ | [开发环境搭建](developer-guide/environment.md) | 入门 | 本地开发环境配置 |
-| ⭐⭐ | [代码结构详解](developer-guide/code_structure.md) | 核心 | 项目架构和模块划分 |
-| ⭐⭐⭐ | [开发指南](developer-guide/development_guide.md) | 进阶 | 核心开发流程和规范 |
-| ⭐⭐⭐⭐ | [高级开发主题](developer-guide/advanced_dev.md) | 专家 | 架构决策和最佳实践 |
+| ⭐⭐ | [代码结构详解](developer-guide/code-structure.md) | 核心 | 项目架构和模块划分 |
+| ⭐⭐⭐ | [开发指南](developer-guide/development-guide.md) | 进阶 | 核心开发流程和规范 |
+| ⭐⭐⭐⭐ | [高级开发主题](developer-guide/advanced-dev.md) | 专家 | 架构决策和最佳实践 |
 
 ### 学习建议
 
@@ -117,9 +117,9 @@ Q: 你的主要目标是什么？
 | 级别 | 文档名称 | 难度 | 内容概述 |
 |------|----------|------|----------|
 | ⭐ | [基础知识回顾](mastery-guide/fundamentals.md) | 入门 | 核心技术概念回顾 |
-| ⭐⭐ | [架构深度解析](mastery-guide/architecture_analysis.md) | 核心 | DDD架构和设计原理 |
+| ⭐⭐ | [架构深度解析](mastery-guide/architecture-analysis.md) | 核心 | DDD架构和设计原理 |
 | ⭐⭐⭐ | [性能优化](mastery-guide/performance.md) | 进阶 | 性能分析和优化方法 |
-| ⭐⭐⭐⭐ | [设计模式](mastery-guide/design_patterns.md) | 专家 | 架构模式和最佳实践 |
+| ⭐⭐⭐⭐ | [设计模式](mastery-guide/design-patterns.md) | 专家 | 架构模式和最佳实践 |
 
 ### 学习建议
 

@@ -541,9 +541,9 @@ main分支 ───────────────────────
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [架构深度解析](architecture_analysis.md) | DDD架构和设计原理 | ⭐⭐ |
+| [架构深度解析](architecture-analysis.md) | DDD架构和设计原理 | ⭐⭐ |
 | [性能优化](performance.md) | 性能分析和优化方法 | ⭐⭐⭐ |
-| [设计模式](design_patterns.md) | 架构模式和最佳实践 | ⭐⭐⭐⭐ |
+| [设计模式](design-patterns.md) | 架构模式和最佳实践 | ⭐⭐⭐⭐ |
 
 ---
 

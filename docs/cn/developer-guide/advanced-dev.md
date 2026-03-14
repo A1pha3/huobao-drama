@@ -627,8 +627,8 @@ func (h *HealthHandler) Check(c *gin.Context) {
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
 | [开发环境搭建](environment.md) | 本地开发环境配置 | ⭐ |
-| [代码结构详解](code_structure.md) | 项目架构和模块划分 | ⭐⭐ |
-| [开发指南](development_guide.md) | 核心开发流程和规范 | ⭐⭐⭐ |
+| [代码结构详解](code-structure.md) | 项目架构和模块划分 | ⭐⭐ |
+| [开发指南](development-guide.md) | 核心开发流程和规范 | ⭐⭐⭐ |
 | [架构设计文档](../architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
 
 ---

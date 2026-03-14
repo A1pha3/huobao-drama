@@ -720,7 +720,7 @@ func (s *ProjectAppService) CreateProject(ctx context.Context, req *CreateReques
 |----------|------|------|
 | [基础知识回顾](fundamentals.md) | 核心技术概念回顾 | ⭐ |
 | [性能优化](performance.md) | 性能分析和优化方法 | ⭐⭐⭐ |
-| [设计模式](design_patterns.md) | 架构模式和最佳实践 | ⭐⭐⭐⭐ |
+| [设计模式](design-patterns.md) | 架构模式和最佳实践 | ⭐⭐⭐⭐ |
 
 ---
 

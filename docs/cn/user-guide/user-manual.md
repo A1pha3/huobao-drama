@@ -404,8 +404,8 @@ AI服务配置决定了平台调用外部AI能力的参数。正确配置AI服�
 |----------|------|------|
 | [安装指南](../getting-started/installation.md) | 环境准备和部署配置 | ⭐ |
 | [快速入门](../getting-started/quick-start.md) | 15分钟创建第一个项目 | ⭐ |
-| [高级用法](advanced_usage.md) | 复杂场景处理 | ⭐⭐⭐ |
-| [最佳实践](best_practices.md) | 创作方法论 | ⭐⭐⭐⭐ |
+| [高级用法](advanced-usage.md) | 复杂场景处理 | ⭐⭐⭐ |
+| [最佳实践](best-practices.md) | 创作方法论 | ⭐⭐⭐⭐ |
 
 ---
 

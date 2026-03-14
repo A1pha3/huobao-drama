@@ -597,8 +597,8 @@ DEBUG=true ./huobao-drama
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
 | [开发环境搭建](environment.md) | 本地开发环境配置 | ⭐ |
-| [代码结构详解](code_structure.md) | 项目架构和模块划分 | ⭐⭐ |
-| [高级开发主题](advanced_dev.md) | 架构决策和最佳实践 | ⭐⭐⭐⭐ |
+| [代码结构详解](code-structure.md) | 项目架构和模块划分 | ⭐⭐ |
+| [高级开发主题](advanced-dev.md) | 架构决策和最佳实践 | ⭐⭐⭐⭐ |
 
 ---
 

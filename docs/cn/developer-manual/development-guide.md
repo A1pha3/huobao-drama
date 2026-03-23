@@ -434,7 +434,7 @@ func TestCreateProject(t *testing.T) {
     
     // 发送请求
     resp, err := http.Post(
-        ts.URL+"/api/v1/projects",
+        ts.URL+"/api/v1/dramas",
         "application/json",
         strings.NewReader(`{"name":"测试项目"}`),
     )
@@ -515,17 +515,17 @@ logger.Error("处理失败",
 
 ```bash
 # 创建项目
-curl -X POST http://localhost:5678/api/v1/projects \
+curl -X POST http://localhost:5678/api/v1/dramas \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{"name":"测试项目","description":"测试描述"}'
 
 # 获取项目列表
-curl http://localhost:5678/api/v1/projects \
+curl http://localhost:5678/api/v1/dramas \
   -H "Authorization: Bearer YOUR_TOKEN"
 
 # 获取单个项目
-curl http://localhost:5678/api/v1/projects/{id} \
+curl http://localhost:5678/api/v1/dramas/{id} \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 

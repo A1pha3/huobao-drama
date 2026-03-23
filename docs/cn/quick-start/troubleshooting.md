@@ -182,7 +182,7 @@ cp /tmp/recovered.db /opt/huobao-drama/data/drama_generator.db
 
 ```bash
 # 构造请求并查看详细错误
-curl -v http://localhost:5678/api/v1/projects
+curl -v http://localhost:5678/api/v1/dramas
 
 # 预期输出应包含详细错误信息
 ```
@@ -203,7 +203,7 @@ docker logs huobao-drama-app 2>&1 | grep -i "validation\|parameter"
 
 ```bash
 # 检查认证Token
-curl -H "Authorization: Bearer YOUR_TOKEN" http://localhost:5678/api/v1/projects
+curl -H "Authorization: Bearer YOUR_TOKEN" http://localhost:5678/api/v1/dramas
 
 # Token是否有效？
 # 1. 检查Token是否过期
@@ -240,7 +240,7 @@ curl -H "Authorization: Bearer TOKEN" http://localhost:5678/api/v1/users/me
 
 ```bash
 # 检查资源ID是否正确
-curl -H "Authorization: Bearer TOKEN" http://localhost:5678/api/v1/projects/non_existent_id
+curl -H "Authorization: Bearer TOKEN" http://localhost:5678/api/v1/dramas/non_existent_id
 
 # 检查项目是否存在
 ```
@@ -302,7 +302,7 @@ curl -X POST https://api.openai.com/v1/chat/completions \
 ls -la /opt/huobao-drama/data/storage/storyboards/
 
 # 检查文件路径配置
-curl http://localhost:5678/api/v1/projects/{project_id}/storyboards/{storyboard_id}
+curl http://localhost:5678/api/v1/storyboards/{storyboard_id}
 ```
 
 **解决方案**：重新生成分镜图像，或检查存储路径配置。
@@ -471,7 +471,7 @@ find /opt/huobao-drama/data/storage/videos -type f -mtime +30 -delete
 
 ```bash
 # 第一步：测试API响应时间
-time curl -o /dev/null -s http://localhost:5678/api/v1/projects
+time curl -o /dev/null -s http://localhost:5678/api/v1/dramas
 
 # 第二步：检查数据库查询时间
 # 在配置中启用慢查询日志
@@ -546,7 +546,7 @@ docker logs huobao-drama-app 2>&1 | jq 'select(.level | . == "error" or . == "wa
 docker logs huobao-drama-app 2>&1 | grep "req_id"
 
 # 2. 或者使用trace ID（如果已配置）
-curl -H "X-Trace-ID: test-123" http://localhost:5678/api/v1/projects
+curl -H "X-Trace-ID: test-123" http://localhost:5678/api/v1/dramas
 ```
 
 ---

@@ -159,7 +159,7 @@ type ProjectHandler struct {
 
 // RegisterRoutes 注册项目相关路由
 func (h *ProjectHandler) RegisterRoutes(r *gin.Engine) {
-    projects := r.Group("/api/v1/projects")
+    projects := r.Group("/api/v1/dramas")
     {
         projects.GET("", h.List)
         projects.POST("", h.Create)

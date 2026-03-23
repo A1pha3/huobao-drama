@@ -215,7 +215,7 @@ docker compose logs -f app
 |------|----------|
 | http://localhost:5678 | 显示火宝短剧用户界面 |
 | http://localhost:5678/health | 返回`{"status":"ok"}` |
-| http://localhost:5678/api/v1/projects | 返回授权错误（表示API正常） |
+| http://localhost:5678/api/v1/dramas | 返回授权错误（表示API正常） |
 
 如果所有地址都能正常响应，说明安装成功！
 

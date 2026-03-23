@@ -222,7 +222,7 @@ cd web
 npm run dev
 ```
 
-开发服务器运行后，会自动打开浏览器窗口访问开发地址。通常是http://localhost:5173或http://localhost:3012。
+开发服务器运行后，会自动打开浏览器窗口访问开发地址。默认地址是 http://localhost:3012。
 
 **构建生产版本**：
 
@@ -440,7 +440,6 @@ server:
   port: 5678
   host: "0.0.0.0"
   cors_origins:
-    - "http://localhost:5173"
     - "http://localhost:3012"
 
 storage:

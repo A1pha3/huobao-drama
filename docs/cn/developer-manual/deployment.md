@@ -400,7 +400,7 @@ curl http://localhost:5678/health
 # {"status":"ok","timestamp":"2026-02-05T12:00:00Z"}
 
 # 检查API可用性
-curl http://localhost:5678/api/v1/projects
+curl http://localhost:5678/api/v1/dramas
 
 # 预期输出（未授权但表示服务正常）
 # {"code":401,"message":"unauthorized"}

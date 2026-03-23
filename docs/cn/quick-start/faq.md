@@ -461,7 +461,7 @@ sqlite3 data/drama_generator.db "PRAGMA integrity_check;"
    ```
 
 3. **访问开发环境**：
-   - 前端：http://localhost:5173
+   - 前端：http://localhost:3012
    - 后端API：http://localhost:5678
 
 ### Q15：如何运行测试？

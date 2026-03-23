@@ -586,7 +586,7 @@ func TestCreateProject(t *testing.T) {
     
     // 发送请求
     resp, err := http.Post(
-        ts.URL+"/api/v1/projects",
+        ts.URL+"/api/v1/dramas",
         "application/json",
         strings.NewReader(`{"name":"测试项目"}`),
     )

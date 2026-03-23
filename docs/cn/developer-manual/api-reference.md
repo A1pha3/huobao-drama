@@ -1250,11 +1250,11 @@ def wait_for_task(client: HuobaoClient, task_id: str, interval: int = 5) -> dict
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [快速入门指南](quick-start.md) | 15分钟快速上手 | ⭐ |
-| [用户手册](user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
-| [架构设计文档](architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
+| [快速入门指南](../quick-start/quick-start.md) | 15分钟快速上手 | ⭐ |
+| [用户手册](../quick-start/user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
+| [架构设计文档](../expert-manual/architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
 | [部署运维指南](deployment.md) | 生产环境部署和运维指南 | ⭐⭐ |
-| [故障排查文档](troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
+| [故障排查文档](../quick-start/troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
 
 ---
 

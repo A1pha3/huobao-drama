@@ -312,7 +312,7 @@ AI功能依赖网络调用，网络状况直接影响使用体验。
 |----------|------|------|
 | [用户手册](user-manual.md) | 完整功能操作指南 | ⭐⭐ |
 | [最佳实践](best-practices.md) | 创作方法论 | ⭐⭐⭐⭐ |
-| [API参考](../api-reference.md) | 开发者API参考手册 | ⭐⭐⭐ |
+| [API参考](../developer-manual/api-reference.md) | 开发者API参考手册 | ⭐⭐⭐ |
 
 ---
 

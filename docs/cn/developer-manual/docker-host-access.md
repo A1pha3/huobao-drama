@@ -295,10 +295,10 @@ iptables -A INPUT -p tcp --dport 11434 -j DROP
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [安装指南](getting-started/installation.md) | Docker 完整安装配置 | ⭐ |
-| [快速入门](getting-started/quick-start.md) | 15 分钟创建第一个项目 | ⭐ |
+| [安装指南](../quick-start/installation.md) | Docker 完整安装配置 | ⭐ |
+| [快速入门](../quick-start/quick-start.md) | 15 分钟创建第一个项目 | ⭐ |
 | [部署指南](deployment.md) | 生产环境部署详细指南 | ⭐⭐ |
-| [故障排查](troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
+| [故障排查](../quick-start/troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
 
 ---
 

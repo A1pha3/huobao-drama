@@ -746,7 +746,7 @@ func InitializeContainer(cfg *Config) *Container {
 
 ### 4.1 仓储模式实现
 
-**仓储（Repository）**是DDD中用于访问聚合根的抽象接口。仓储隐藏了数据访问的细节，领域层只需要调用仓储的方法，而不需要知道数据是如何存储的。
+**仓储（Repository）**是DDD中用于访问聚合根的抽象接口。仓储隐藏了数据访问的细节，领域层只要调用仓储的方法，而不需要知道数据是如何存储的。
 
 **仓储接口定义（在领域层）**：
 
@@ -1409,7 +1409,7 @@ func (p *AIServiceProvider) RegisterMyAI(cfg *AIConfig) {
 
 ### 7.2 存储扩展
 
-系统支持扩展新的存储后端，只需实现IStorage接口即可。
+系统支持扩展新的存储后端，只要实现IStorage接口即可。
 
 ```go
 // S3Storage S3存储实现
@@ -1518,11 +1518,11 @@ func (f *StorageFactory) Create(cfg *Config, storageType StorageType) IStorage {
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [快速入门指南](quick-start.md) | 15分钟快速上手 | ⭐ |
-| [用户手册](user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
-| [API接口文档](api-reference.md) | 开发者API参考手册 | ⭐⭐⭐ |
-| [部署运维指南](deployment.md) | 生产环境部署和运维指南 | ⭐⭐ |
-| [故障排查文档](troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
+| [快速入门指南](../quick-start/quick-start.md) | 15分钟快速上手 | ⭐ |
+| [用户手册](../quick-start/user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
+| [API接口文档](../developer-manual/api-reference.md) | 开发者API参考手册 | ⭐⭐⭐ |
+| [部署运维指南](../developer-manual/deployment.md) | 生产环境部署和运维指南 | ⭐⭐ |
+| [故障排查文档](../quick-start/troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
 
 ---
 

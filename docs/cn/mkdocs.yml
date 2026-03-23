@@ -101,67 +101,35 @@ social:
 nav:
   - 文档首页: index.md
   - 快速入门:
-      - getting-started/installation.md
-      - getting-started/quick-start.md
+      - quick-start/installation.md
+      - quick-start/quick-start.md
+      - quick-start/cheat-sheet.md
   - 用户指南:
-      - user-guide/user-manual.md
-      - user-guide/advanced_usage.md
-      - user-guide/best_practices.md
-  - 开发者指南:
-      - developer-guide/environment.md
-      - developer-guide/code_structure.md
-      - developer-guide/development_guide.md
-      - developer-guide/advanced_dev.md
-  - 进阶路径:
-      - mastery-guide/fundamentals.md
-      - mastery-guide/architecture_analysis.md
-      - mastery-guide/performance.md
-      - mastery-guide/design_patterns.md
-  - 参考资料:
-      - api-reference.md
-      - architecture.md
-      - deployment.md
-      - troubleshooting.md
-      - contributing.md
-      - docker-host-access.md
-      - security-guide.md
-      - references/glossary.md
-      - references/faq.md
-
-# Page tree configuration
-# This creates a more intuitive folder-based navigation
-page_tree:
-  # Root level
-  - index.md
-  # Getting started section
-  - getting-started:
-      - Installation: getting-started/installation.md
-      - Quick Start: getting-started/quick-start.md
-  # User guide section
-  - user-guide:
-      - User Manual: user-guide/user-manual.md
-      - Advanced Usage: user-guide/advanced_usage.md
-      - Best Practices: user-guide/best_practices.md
-  # Developer guide section
-  - developer-guide:
-      - Environment Setup: developer-guide/environment.md
-      - Code Structure: developer-guide/code_structure.md
-      - Development Guide: developer-guide/development_guide.md
-      - Advanced Development: developer-guide/advanced_dev.md
-  # Mastery guide section
-  - mastery-guide:
-      - Fundamentals: mastery-guide/fundamentals.md
-      - Architecture Analysis: mastery-guide/architecture_analysis.md
-      - Performance: mastery-guide/performance.md
-      - Design Patterns: mastery-guide/design_patterns.md
-  # Reference section
-  - API Reference: api-reference.md
-  - Architecture: architecture.md
-  - Deployment: deployment.md
-  - Troubleshooting: troubleshooting.md
-  - Contributing: contributing.md
-  - Glossary: references/glossary.md
-  - FAQ: references/faq.md
+      - quick-start/user-manual.md
+      - quick-start/advanced-usage.md
+      - quick-start/best-practices.md
+      - quick-start/troubleshooting.md
+      - quick-start/faq.md
+      - quick-start/glossary.md
+  - 开发手册:
+      - developer-manual/environment.md
+      - developer-manual/code-structure.md
+      - developer-manual/development-guide.md
+      - developer-manual/advanced-dev.md
+      - developer-manual/api-reference.md
+      - developer-manual/deployment.md
+      - developer-manual/data-migration.md
+      - developer-manual/docker-host-access.md
+      - developer-manual/improvement-proposals.md
+      - developer-manual/contributing.md
+  - 专家指南:
+      - expert-manual/fundamentals.md
+      - expert-manual/architecture.md
+      - expert-manual/architecture-analysis.md
+      - expert-manual/storyboard-module-analysis.md
+      - expert-manual/performance.md
+      - expert-manual/design-patterns.md
+      - expert-manual/security-guide.md
 
 # Google Analytics (optional - uncomment and configure)
 # google_analytics:

@@ -459,7 +459,7 @@ func (h *ScriptEventHandler) Handle(ctx context.Context, event domain.Event) err
 
 ### 4.1 仓储接口
 
-**仓储（Repository）**是DDD中用于访问聚合根的抽象接口。仓储隐藏了数据访问的细节，领域层只需要调用仓储的方法，而不需要知道数据是如何存储的。
+**仓储（Repository）**是DDD中用于访问聚合根的抽象接口。仓储隐藏了数据访问的细节，领域层只要调用仓储的方法，而不需要知道数据是如何存储的。
 
 **仓储接口定义（在领域层）**：
 

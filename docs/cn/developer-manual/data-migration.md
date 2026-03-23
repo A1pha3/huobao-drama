@@ -1,5 +1,13 @@
 # 数据清洗服务文档
 
+> **学习目标**：理解数据清洗服务的触发方式、处理范围、故障排查方法，并能够在开发环境中独立完成验证。
+> 
+> **前置知识**：建议具备 Go 服务启动经验，并了解 SQLite 与本地文件存储的基础概念。
+> 
+> **难度等级**：⭐⭐（核心概念）
+> 
+> **预计学习时间**：20-30 分钟
+
 ## 概述
 
 数据清洗服务（Data Migration Service）用于自动下载并迁移数据库中 `local_path` 字段为空的数据。该服务会在应用启动时自动执行，将远程 URL 的文件下载到本地存储，并更新数据库中的 `local_path` 字段。
@@ -228,7 +236,16 @@ if err := migrationService.MigrateLocalPaths(); err != nil {
 
 - **服务实现**：`application/services/data_migration_service.go`
 - **集成代码**：`main.go`（第 45-55 行）
-- **文档**：`docs/data-migration.md`
+- **文档**：`docs/cn/developer-manual/data-migration.md`
+
+## 相关文档链接
+
+| 文档名称 | 说明 | 难度 |
+|----------|------|------|
+| [开发环境搭建](environment.md) | 本地开发环境配置 | ⭐ |
+| [部署指南](deployment.md) | 生产环境部署与运维 | ⭐⭐ |
+| [故障排查](../quick-start/troubleshooting.md) | 常见问题定位与恢复 | ⭐⭐ |
+| [架构设计文档](../expert-manual/architecture.md) | 系统架构与数据流设计 | ⭐⭐⭐⭐ |
 
 ## 版本历史
 

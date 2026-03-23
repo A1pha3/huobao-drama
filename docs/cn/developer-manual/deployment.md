@@ -1038,11 +1038,11 @@ http {
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [快速入门指南](quick-start.md) | 15分钟快速上手 | ⭐ |
-| [用户手册](user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
+| [快速入门指南](../quick-start/quick-start.md) | 15分钟快速上手 | ⭐ |
+| [用户手册](../quick-start/user-manual.md) | 平台功能的完整操作指南 | ⭐⭐ |
 | [API接口文档](api-reference.md) | 开发者API参考手册 | ⭐⭐⭐ |
-| [架构设计文档](architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
-| [故障排查文档](troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
+| [架构设计文档](../expert-manual/architecture.md) | 系统架构深度解析 | ⭐⭐⭐⭐ |
+| [故障排查文档](../quick-start/troubleshooting.md) | 常见问题和解决方案 | ⭐⭐ |
 
 ---
 

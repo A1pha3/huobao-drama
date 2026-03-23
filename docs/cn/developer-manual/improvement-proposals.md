@@ -1,5 +1,13 @@
 # 火宝短剧分镜模块改进建议
 
+> **学习目标**：掌握分镜模块改进提案的优先级评估方法，能够据此制定可执行的技术改造计划。
+> 
+> **前置知识**：建议先阅读《代码结构详解》和《分镜模块原理解析》，了解当前实现与核心约束。
+> 
+> **难度等级**：⭐⭐⭐（进阶分析）
+> 
+> **预计学习时间**：20-30 分钟
+
 ## 文档概述
 
 本文档汇总了火宝短剧分镜模块的所有改进建议，按照优先级排序。每条建议包含问题描述、影响分析、改进方案、工作量估算和风险评估，方便技术负责人做出实施决策。
@@ -952,9 +960,9 @@ func calculateDuration(script string) int {
 
 ## 附录B：相关文档链接
 
-- [分镜模块深度分析报告](../analysis/storyboard-module-analysis.md)
-- [代码结构说明](../developer-guide/code-structure.md)
-- [API参考文档](../api-reference.md)
+- [分镜模块深度分析报告](../expert-manual/storyboard-module-analysis.md)
+- [代码结构说明](code-structure.md)
+- [API参考文档](api-reference.md)
 
 ---
 

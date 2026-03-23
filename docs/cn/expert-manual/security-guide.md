@@ -491,9 +491,9 @@ func SecurityLogger() gin.HandlerFunc {
 
 | 文档名称 | 说明 | 难度 |
 |----------|------|------|
-| [部署指南](deployment.md) | 生产环境部署详细指南 | ⭐⭐ |
-| [故障排查](troubleshooting.md) | 安全相关问题诊断 | ⭐⭐ |
-| [API 参考](api-reference.md) | 认证相关 API | ⭐⭐⭐ |
+| [部署指南](../developer-manual/deployment.md) | 生产环境部署详细指南 | ⭐⭐ |
+| [故障排查](../quick-start/troubleshooting.md) | 安全相关问题诊断 | ⭐⭐ |
+| [API 参考](../developer-manual/api-reference.md) | 认证相关 API | ⭐⭐⭐ |
 
 ---
 
